@@ -19,12 +19,13 @@ levels(carreraFactor) <- leyendaCarreraTemp
 
 carreraGrafico <- barplot(table(carreraFactor), 
         main = "Carrera", 
+        legend.text = TRUE,
         xlab = "Carrera de los encuatados", 
         ylab = "Frecuancia",
         col=palette("Pastel 1")
 )
-#leyenda
-legend( x = "topright", legend =  leyendaCarreraTemp, fill = palette("Pastel 1"), title = "Leyenda", )
+
+#Tabla:
 
 
 #Grafico de Barra: Sexo
@@ -32,34 +33,41 @@ sexoFactor <- factor(data$Genero)
 
 sexoTable <- table(sexoFactor)
 sexoGrafico <- barplot(sexoTable, 
-        main = "Sexo",
-        xlab = "Sexo de participante",
-        ylab = "Frecuencia", 
-        col = palette("Pastel 1")
+                       main = "Sexo",
+                       xlab = "Sexo de participante",
+                       ylab = "Frecuencia", 
+                       col = palette("Pastel 1"),
+                       legend.text = TRUE
 )
 
-#leyenda
-legend( x = "topright", legend = levels(sexoFactor), fill =  palette("Pastel 1"))
 
+table(carreraFactor, sexoFactor )
 
 #Grafico histograma: edad
 edadGrafico <- hist(data$Edad, 
-     main = "Edad de encuestados", 
-     xlab = "Edad", 
-     ylab = "Frecuencia", 
-     col = palette("Pastel 1")
+                    breaks='Sturges',                
+                    main = "Edad de encuestados", 
+                    xlab = "Edad", 
+                    ylab = "Frecuencia",
+                    col = palette("Pastel 1")
 )
+legend( x = "topright", legend = c("16-18","18-20","20-22","22-24","24-26","26-28","28-30", "30-32","32-34", "34-36", "36-38", "38-40"), fill = palette("Pastel 1"), title = "Leyenda") 
 
 #Grafico de pastel"
 trabajoFactor <- data$X.Actualmente.trabajas.
 trabajoTable <- table(trabajoFactor)
 trabajoGrafico <- pie(trabajoTable, main = "Estatus laboral", col = palette("Pastel 1"))
 
-#leyenda
-#legend(x = "topright", legend = levels(trabajoFactor), fill = palette("Pastel 1"))
-#Grafico 
+proporciones <- ftable(data$X.Actualmente.trabajas.)[1,]
+pct <- round(proporciones/sum(proporciones)*100)
+eti <- paste(pct, "%", sep = "")
+
+
+legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
 
 #Grafico de pastel
 pie(table(factor(data$Si.actualmente.trabajas..cuál.es.tu.salario)), 
     main = "Ingresos de encuastados",
     col = palette("Pastel 1"))
+
+legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")

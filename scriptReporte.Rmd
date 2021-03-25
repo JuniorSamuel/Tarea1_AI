@@ -1,0 +1,138 @@
+---
+title: "Reporte"
+author: "Junior Samuel De Los Santos Velazquez"
+subtitle: "Inteligencia Artificial"
+date: "24/3/2021"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción:
+
+En este documento tiene como proposito utilizar **R**, para analizar los datos obtenidos  de <https://github.com/JuniorSamuel/Tarea1_AI/raw/main/Datos/Empleabilidad%20de%20los%20estudiantes%20del%20ITLA.xlsx> de un encuesta realizada sobre la empreabilidad de los estudiantes del ITLA. En este documento veremos como exportar los datos de una archivo remoto, como crear graficos y tablas.
+
+```{r}
+library(readxl)
+url <- "https://github.com/JuniorSamuel/Tarea1_AI/raw/main/Datos/Empleabilidad%20de%20los%20estudiantes%20del%20ITLA.xlsx"
+destfile <- "dataset.xlsx"
+curl::curl_download(url, destfile)
+dataset <- read_excel(destfile, col_types = c("date", 
+                                              "text", "text", "text", "text", "numeric", 
+                                              "text", "text", "text", "text", "skip", 
+                                              "text", "text", "text", "text", "numeric", 
+                                              "numeric", "numeric", "text", "text", 
+                                              "text", "text", "text", "skip", "skip"))
+#Generando dataFrame
+data <- data.frame(dataset)
+```
+
+## Datos:
+
+**Carrera de los encuestados.**
+
+Codigo utilizado para crear el grafico:
+
+```{r, fig.width=10, fig.height=10}
+#Grafico de barra: Carrera 
+carreraFactor <- factor(data$Carrera.)
+leyendaCarrera <- levels(carreraFactor)
+leyendaCarreraTemp <- c("A.C", "D.S", "D.I", "M.A", "Mec", "Mul", "R.I", "S.I", "Son", "M.D.M")
+levels(carreraFactor) <- leyendaCarreraTemp
+
+carreraGrafico <- barplot(table(carreraFactor), 
+        main = "Carrera",
+        xlab = "Carrera de los encuatados", 
+        ylab = "Frecuancia",
+        col=palette("Pastel 1")
+)
+legend( x = "topright", legend =  leyendaCarrera, fill = palette("Pastel 1"), title = "Leyenda" )
+
+#Tabla 
+
+```
+
+
+Interpretacion: En la siguiente tabla y grafico podemos observar que a los estudiantes la carrera de Desarrollo de software tuvieron mas participacion en la encuesta, seguido por Seguridad Informatica con 19.1%. Las carreras con menor participación en la encuesta son Diseño Industrial y Manufactura Automatizada con 0.5% cada uno, tambien podemos ver que no todas las carrera participaron.
+
+**Sexo**
+
+Grafico:
+```{r, fig.width=10, fig.height=5 }
+#Grafico de Barra: Sexo
+sexoFactor <- factor(data$Genero)
+
+sexoTable <- table(sexoFactor)
+sexoGrafico <- barplot(sexoTable, 
+        main = "Sexo",
+        xlab = "Sexo de participante",
+        ylab = "Frecuencia", 
+        col = palette("Pastel 1"),
+        legend.text = TRUE
+)
+
+
+table(carreraFactor, sexoFactor )
+
+```
+
+Interpretación: Los encuestado era mayoritariamente hombres, representando el 71.8% y las mujeres el 28.2%
+
+**Edad**
+
+Grafico:
+```{r, fig.width=10, fig.height=7}
+#Grafico histograma: edad
+edadGrafico <- hist(data$Edad, 
+     breaks='Sturges',                
+     main = "Edad de encuestados", 
+     xlab = "Edad", 
+     ylab = "Frecuencia",
+     col = palette("Pastel 1")
+)
+legend( x = "topright", legend = c("16-18","18-20","20-22","22-24","24-26","26-28","28-30", "30-32","32-34", "34-36", "36-38", "38-40"), fill = palette("Pastel 1"), title = "Leyenda")
+```
+
+Interpretación: La mayor parte de los encuestados se encuentra entre 16 al 19 años de edad, correspondiendo al 56.5% de los encuestados,  el 29.7% representa a los 19 a 22 años. La primer y segunda clase representa el 86.1% de los datos total de datos.
+
+**¿Actualmente Trabaja?**
+Grafico:
+```{r, fig.width= 10, fig.height=5}
+#Grafico de pastel"
+trabajoFactor <- data$X.Actualmente.trabajas.
+trabajoTable <- table(trabajoFactor)
+trabajoGrafico <- pie(trabajoTable, main = "Estatus laboral", col = palette("Pastel 1"))
+
+proporciones <- ftable(data$X.Actualmente.trabajas.)[1,]
+pct <- round(proporciones/sum(proporciones)*100)
+eti <- paste(pct, "%", sep = "")
+
+
+legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
+```
+
+Intepretacion: Solo el 14.8% de los encuestados actualmente trabaja, 55.5% de los  encuestado no trabaja actualmente pero asegura que tiene interés en trabajar, los demás solo indicaron que no trabajar en la actualidad y no mostraron interés en trabajar. 
+
+**Ingresos de los encuestados **
+Grafico:
+```{r, fig.width= 10, fig.height=5}
+#Grafico de pastel
+ingresoFactor <- factor(data$Si.actualmente.trabajas..cuál.es.tu.salario)
+ingresoTabla <- table(ingresoFactor)
+pie(ingresoTabla, 
+    main = "Ingresos de encuastados",
+    col = palette("Pastel 1"))
+proporciones <- ftable(data$Si.actualmente.trabajas..cuál.es.tu.salario)[1,]
+pct <- round(proporciones/sum(proporciones)*100)
+eti <- paste(pct, "%", sep = "")
+
+
+legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
+```
+
+Intepretación: El 14.8% (31 de 209) participante que actualmente trabajan dividen su salarios de la siguiente forma. El 16.1 gana menos de \$5,000 pesos, el 25.8% gana entre RD\$ 5,000 a RD\$ 25,000 pesos, el salario del 32.4% esta entre \$15,000 a RD\$ 25,000 peso, el restante 25.8% esta sobre lo RD$ 25,000 peso.
+
