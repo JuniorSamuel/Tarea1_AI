@@ -2,13 +2,13 @@
 Matricula: 2019-8756
 
 Descripción: 
-El proyecto contiene un archivo scritp.R, este archivo crea 5 graficos que puede visualizar en la ventana de Plot, 3 tabla visibles por consola (esta fue la unica forma que encontre para crear tablas) y por ultimos las interpretación que los graficos tambien impresos por consola.
+El proyecto contiene un archivo scritp.R, este archivo crea 5 gráficos que puede visualizar en la ventana de Plot, 3 tabla visibles por consola (esta fue la única forma que encontré para crear tablas) y por ultimos las interpretación que los gráficos también impresos por consola.
 
-En proyecto tambien tenemos un archivo scriptReporte.Rmd, En este archivo, este archivo permite crear el reporte  usando el lenguaje de marcado R markdown para general un archivo.docx (resulta error al intentar crear un pdf), este lenguaje permite utilizar R.
-Para poder ejecutar este archivo debe instalar la libre de Rmarkdowm usando el comando install.packages('rmarkdown').
+En proyecto también tenemos un archivo scriptReporte.Rmd, En este archivo, este archivo permite crear el reporte  usando el lenguaje de marcado R markdown para general un archivo.docx (resulta error al intentar crear un pdf en la version de escritorio de Rstudio, esto no sucede en la versión), este lenguaje permite utilizar R.
+Para poder ejecutar este archivo debe instalar la libre de Rmarkdowm usando el comando install.packages('rmarkdown'). Para correr el código debe seleccionar el botón de knit, por defecto creara un .docx pero puede seleccionar en el boton de Knit si quiere crear un pdf o html.
 
 En la carpeta data tenemos la base de datos, ojo no es necesario descargar la base de datos para ejecutar el script ya que utilizo la url para obtener los datos, al ejecutar el script se descargará la base de datos.
 
 
-NOTA: para poder ejecujar los script que tener instalado la libreria de readxl, puede usar install.packages("readxl") para instalarlo.
+NOTA: para poder ejecutar los script que tener instalado la librería de readxl, puede usar install.packages("readxl") para instalarlo y la libreria rmarkdown para poder ejecutar el scriptReporte.Rmd puede usar install.packages('rmarkdown') para instalarlo.
 ******************************** Fin 

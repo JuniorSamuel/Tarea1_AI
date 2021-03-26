@@ -4,8 +4,8 @@ author: "Junior Samuel De Los Santos Velazquez"
 subtitle: "Inteligencia Artificial"
 date: "24/3/2021"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
