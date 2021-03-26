@@ -8,4 +8,7 @@ En proyecto tambien tenemos un archivo scriptReporte.Rmd, En este archivo, este 
 Para poder ejecutar este archivo debe instalar la libre de Rmarkdowm usando el comando install.packages('rmarkdown').
 
 En la carpeta data tenemos la base de datos, ojo no es necesario descargar la base de datos para ejecutar el script ya que utilizo la url para obtener los datos, al ejecutar el script se descargará la base de datos.
+
+
+NOTA: para poder ejecujar los script que tener instalado la libreria de readxl, puede usar install.packages("readxl") para instalarlo.
 ******************************** Fin 
