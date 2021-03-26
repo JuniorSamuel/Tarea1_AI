@@ -1,0 +1,11 @@
+******************************** Inicio 
+Matricula: 2019-8756
+
+Descripción: 
+El proyecto contiene un archivo scritp.R, este archivo crea 5 graficos que puede visualizar en la ventana de Plot, 3 tabla visibles por consola (esta fue la unica forma que encontre para crear tablas) y por ultimos las interpretación que los graficos tambien impresos por consola.
+
+En proyecto tambien tenemos un archivo scriptReporte.Rmd, En este archivo, este archivo permite crear el reporte  usando el lenguaje de marcado R markdown para general un archivo.docx (resulta error al intentar crear un pdf), este lenguaje permite utilizar R.
+Para poder ejecutar este archivo debe instalar la libre de Rmarkdowm usando el comando install.packages('rmarkdown').
+
+En la carpeta data tenemos la base de datos, ojo no es necesario descargar la base de datos para ejecutar el script ya que utilizo la url para obtener los datos, al ejecutar el script se descargará la base de datos.
+******************************** Fin 
