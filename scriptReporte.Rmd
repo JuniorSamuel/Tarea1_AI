@@ -12,9 +12,10 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Introducción:
+\pagebreak
+# Introducción:
 
-En este documento tiene como proposito utilizar **R**, para analizar los datos obtenidos  de <https://github.com/JuniorSamuel/Tarea1_AI/raw/main/Datos/Empleabilidad%20de%20los%20estudiantes%20del%20ITLA.xlsx> de un encuesta realizada sobre la empreabilidad de los estudiantes del ITLA. En este documento veremos como exportar los datos de una archivo remoto, como crear graficos y tablas.
+En este documento tiene como proposito utilizar **R**, para analizar los datos obtenidos  de <https://github.com/JuniorSamuel/Tarea1_AI/raw/main/Datos/Empleabilidad%20de%20los%20estudiantes%20del%20ITLA.xlsx> de un encuesta realizada sobre la empreabilidad de los estudiantes del ITLA.En este formulario fue creado por medio del leguanje de marcado R markdows, que permite utlizar lenguaje R para analizar datos y crear graficos y tablas.
 
 ```{r}
 library(readxl)
@@ -33,7 +34,7 @@ data <- data.frame(dataset)
 
 ## Datos:
 
-**Carrera de los encuestados.**
+### Carrera de los encuestados.
 
 Codigo utilizado para crear el grafico:
 
@@ -52,14 +53,12 @@ carreraGrafico <- barplot(table(carreraFactor),
 )
 legend( x = "topright", legend =  leyendaCarrera, fill = palette("Pastel 1"), title = "Leyenda" )
 
-#Tabla 
-
 ```
 
 
-Interpretacion: En la siguiente tabla y grafico podemos observar que a los estudiantes la carrera de Desarrollo de software tuvieron mas participacion en la encuesta, seguido por Seguridad Informatica con 19.1%. Las carreras con menor participación en la encuesta son Diseño Industrial y Manufactura Automatizada con 0.5% cada uno, tambien podemos ver que no todas las carrera participaron.
+_Interpretacion:_ En la siguiente tabla y grafico podemos observar que a los estudiantes la carrera de Desarrollo de software tuvieron mas participacion en la encuesta, seguido por Seguridad Informatica. Las carreras con menor participación en la encuesta son Diseño Industrial y Manufactura Automatizada, tambien podemos ver que no todas las carrera participaron.
 
-**Sexo**
+### Sexo de los encuestados.
 
 Grafico:
 ```{r, fig.width=10, fig.height=5 }
@@ -78,13 +77,13 @@ sexoGrafico <- barplot(sexoTable,
 
 ```
 
-TAbla de Sexo y Carrera de encuestados.
+Tabla de Sexo y Carrera de encuestados.
 ```{r}
-table(carreraFactor, sexoFactor )
+table(carreraFactor, sexoFactor)
 ```
-Interpretación: Los encuestado era mayoritariamente hombres, representando el 71.8% y las mujeres el 28.2%
+_Interpretación:_ Los encuestado era mayoritariamente hombres, representando y las mujeres. En la tabla podemos observar que en las carrera son principalmente hombres, menos en la carrera de multimedia donde las mujeres doblan la cantidad de participantes hombres.
 
-**Edad**
+### Edad de los encuestados.
 
 Grafico:
 ```{r, fig.width=10, fig.height=7}
@@ -104,9 +103,9 @@ Tabla de edad por sexo (Detalle):
 table(factor(data$Edad), sexoFactor);
 ```
 
-Interpretación: La mayor parte de los encuestados se encuentra entre 16 al 19 años de edad, correspondiendo al 56.5% de los encuestados,  el 29.7% representa a los 19 a 22 años. La primer y segunda clase representa el 86.1% de los datos total de datos.
+_Interpretación:_ La mayor parte de los encuestados se encuentra entre 16 al 20 años de edad.
 
-**¿Actualmente Trabaja?**
+### ¿Actualmente Trabaja?
 Grafico:
 ```{r, fig.width= 10, fig.height=5}
 #Grafico de pastel"
@@ -121,12 +120,14 @@ eti <- paste(pct, "%", sep = "")
 
 legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
 ```
+
+Tabla de trabajo por sexo:
 ```{r}
 table(trabajoFactor, sexoFactor)
 ```
-Intepretacion: Solo el 14.8% de los encuestados actualmente trabaja, 55.5% de los  encuestado no trabaja actualmente pero asegura que tiene interés en trabajar, los demás solo indicaron que no trabajar en la actualidad y no mostraron interés en trabajar. 
+_Intepretacion:_ Solo 30 de los encuestados actualmente trabaja, 113 de los  encuestado no trabaja actualmente pero asegura que tiene interés en trabajar, los demás solo indicaron que no trabajar en la actualidad y no mostraron interés en trabajar. 
 
-**Ingresos de los encuestados **
+### Ingresos de los encuestados.
 Grafico:
 ```{r, fig.width= 10, fig.height=5}
 #Grafico de pastel
@@ -143,10 +144,10 @@ eti <- paste(pct, "%", sep = "")
 legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
 ```
 
-TAbla de ingresos por carrera:
+Tabla de ingresos por carrera:
 ```{r}
 table(ingresoFactor, sexoFactor)
 ```
 
-Intepretación: El 14.8% (31 de 209) participante que actualmente trabajan dividen su salarios de la siguiente forma. El 16.1 gana menos de \$5,000 pesos, el 25.8% gana entre RD\$ 5,000 a RD\$ 25,000 pesos, el salario del 32.4% esta entre \$15,000 a RD\$ 25,000 peso, el restante 25.8% esta sobre lo RD$ 25,000 peso.
+_Intepretación:_ El 82% de los participante que actualmente no trabajan. El 2% gana menos de \$5,000 pesos, el 5% gana entre RD\$ 5,000 a RD\$ 15,000 pesos, el salario del 6% esta entre \$15,000 a RD\$ 25,000 peso, el restante 4% esta sobre lo RD$ 25,000 peso.
 
