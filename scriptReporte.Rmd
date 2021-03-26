@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Introducción:
@@ -37,7 +37,7 @@ data <- data.frame(dataset)
 
 Codigo utilizado para crear el grafico:
 
-```{r, fig.width=10, fig.height=10}
+```{r, fig.width=10, fig.height=8}
 #Grafico de barra: Carrera 
 carreraFactor <- factor(data$Carrera.)
 leyendaCarrera <- levels(carreraFactor)
@@ -76,10 +76,12 @@ sexoGrafico <- barplot(sexoTable,
 )
 
 
-table(carreraFactor, sexoFactor )
-
 ```
 
+TAbla de Sexo y Carrera de encuestados.
+```{r}
+table(carreraFactor, sexoFactor )
+```
 Interpretación: Los encuestado era mayoritariamente hombres, representando el 71.8% y las mujeres el 28.2%
 
 **Edad**
@@ -95,6 +97,11 @@ edadGrafico <- hist(data$Edad,
      col = palette("Pastel 1")
 )
 legend( x = "topright", legend = c("16-18","18-20","20-22","22-24","24-26","26-28","28-30", "30-32","32-34", "34-36", "36-38", "38-40"), fill = palette("Pastel 1"), title = "Leyenda")
+```
+
+Tabla de edad por sexo (Detalle):
+```{r}
+table(factor(data$Edad), sexoFactor);
 ```
 
 Interpretación: La mayor parte de los encuestados se encuentra entre 16 al 19 años de edad, correspondiendo al 56.5% de los encuestados,  el 29.7% representa a los 19 a 22 años. La primer y segunda clase representa el 86.1% de los datos total de datos.
@@ -114,7 +121,9 @@ eti <- paste(pct, "%", sep = "")
 
 legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
 ```
-
+```{r}
+table(trabajoFactor, sexoFactor)
+```
 Intepretacion: Solo el 14.8% de los encuestados actualmente trabaja, 55.5% de los  encuestado no trabaja actualmente pero asegura que tiene interés en trabajar, los demás solo indicaron que no trabajar en la actualidad y no mostraron interés en trabajar. 
 
 **Ingresos de los encuestados **
@@ -132,6 +141,11 @@ eti <- paste(pct, "%", sep = "")
 
 
 legend( x = "topright", legend = eti, fill = palette("Pastel 1"), title = "Porcentaje")
+```
+
+TAbla de ingresos por carrera:
+```{r}
+table(ingresoFactor, sexoFactor)
 ```
 
 Intepretación: El 14.8% (31 de 209) participante que actualmente trabajan dividen su salarios de la siguiente forma. El 16.1 gana menos de \$5,000 pesos, el 25.8% gana entre RD\$ 5,000 a RD\$ 25,000 pesos, el salario del 32.4% esta entre \$15,000 a RD\$ 25,000 peso, el restante 25.8% esta sobre lo RD$ 25,000 peso.

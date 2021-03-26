@@ -40,7 +40,7 @@ sexoGrafico <- barplot(sexoTable,
                        legend.text = TRUE
 )
 
-
+#TAbla
 table(carreraFactor, sexoFactor )
 
 #Grafico histograma: edad
